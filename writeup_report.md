@@ -7,17 +7,6 @@ The goals / steps of this project are the following:
 * Test that the model successfully drives around track one without leaving the road
 * Summarize the results with a written report
 
-
-[//]: # (Image References)
-
-[image1]: ./examples/placeholder.png "Model Visualization"
-[image2]: ./examples/placeholder.png "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
-[image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
-
 ## Rubric Points
 ### Files Submitted & Code Quality
 
@@ -82,11 +71,11 @@ model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape=(160,320,3)))
 model.add(Cropping2D(cropping=((70,25),(0,0))))
 ```
 
-All three models used mean-squared error for the loss function and the adam optimizer. All three models also randomly shuffle the input data before splitting off 20 per cent for validation.
+All three models use mean-squared error for the loss function and the adam optimizer. All three models also randomly shuffle the input data before splitting off 20 per cent for validation.
 
 #### 2. Attempts to reduce overfitting in the model
 
-The data set was agumented to reduce overfitting. Using the images from the offset (right and left) cameras with adjusted steering inputs and flipping all three images (center, right, left) with the steering angle negated added greater data diversity for the training process. The data augmentation occurs in the generator function at lines 50-88.
+The data set was augmented to reduce overfitting. Using the images from the offset (right and left) cameras with adjusted steering inputs and flipping all three images (center, right, left) with the steering angle negated added greater data diversity for the training process. The data augmentation occurs in the generator function at lines 50-88.
 
 Observing the training loss versus validation loss trend suggested limiting the number of EPOCHS to reduce overfitting. The final version used five EPOCHS.
 
@@ -94,7 +83,7 @@ The model was tested by running it through the simulator and ensuring that the v
 
 #### 3. Model parameter tuning
 
-All models used the adam optimizer, so the learning rate was not tuned manually (model.py line 102).
+All models use the adam optimizer, so the learning rate was not tuned manually (model.py line 102).
 
 #### 4. Appropriate training data
 
